@@ -1,6 +1,7 @@
 const Bitap = require('./bitap')
 const deepValue = require('./helpers/deep_value')
 const isArray = require('./helpers/is_array')
+const stopWordsMap = require('./stopWordsMap')
 
 class Fuse {
   constructor (list, {
@@ -45,6 +46,7 @@ class Fuse {
     // When true, the result set will only include records that match all tokens. Will only work
     // if `tokenize` is also true.
     matchAllTokens = false,
+    stopWords = stopWordsMap,
 
     includeMatches = false,
     includeScore = false,
@@ -70,7 +72,8 @@ class Fuse {
       sortFn,
       verbose,
       tokenize,
-      matchAllTokens
+      matchAllTokens,
+      stopWords
     }
 
     this.setCollection(list)
@@ -106,6 +109,7 @@ class Fuse {
     if (this.options.tokenize) {
       // Tokenize on the separator
       const tokens = pattern.split(this.options.tokenSeparator)
+        .filter(token => !this.options.stopWords[token])
       for (let i = 0, len = tokens.length; i < len; i += 1) {
         tokenSearchers.push(new Bitap(tokens[i], this.options))
       }
@@ -199,6 +203,7 @@ class Fuse {
 
       if (this.options.tokenize) {
         let words = value.split(this.options.tokenSeparator)
+          .filter(token => !this.options.stopWords[token])
         let scores = []
 
         for (let i = 0; i < tokenSearchers.length; i += 1) {
