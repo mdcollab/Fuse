@@ -81,7 +81,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 8);
+/******/ 	return __webpack_require__(__webpack_require__.s = 9);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -106,9 +106,9 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var bitapRegexSearch = __webpack_require__(5);
-var bitapSearch = __webpack_require__(7);
-var patternAlphabet = __webpack_require__(4);
+var bitapRegexSearch = __webpack_require__(6);
+var bitapSearch = __webpack_require__(8);
+var patternAlphabet = __webpack_require__(5);
 
 var Bitap = function () {
   function Bitap(pattern, _ref) {
@@ -255,6 +255,135 @@ module.exports = function (obj, path) {
 "use strict";
 
 
+module.exports = {
+  a: true,
+  able: true,
+  about: true,
+  across: true,
+  after: true,
+  all: true,
+  almost: true,
+  also: true,
+  am: true,
+  among: true,
+  an: true,
+  and: true,
+  any: true,
+  are: true,
+  as: true,
+  at: true,
+  be: true,
+  because: true,
+  been: true,
+  but: true,
+  by: true,
+  can: true,
+  cannot: true,
+  could: true,
+  dear: true,
+  did: true,
+  'do': true,
+  does: true,
+  either: true,
+  'else': true,
+  ever: true,
+  every: true,
+  'for': true,
+  from: true,
+  'get': true,
+  got: true,
+  had: true,
+  has: true,
+  have: true,
+  he: true,
+  her: true,
+  hers: true,
+  him: true,
+  his: true,
+  how: true,
+  however: true,
+  i: true,
+  'if': true,
+  'in': true,
+  into: true,
+  is: true,
+  it: true,
+  its: true,
+  just: true,
+  least: true,
+  let: true,
+  like: true,
+  likely: true,
+  may: true,
+  me: true,
+  might: true,
+  most: true,
+  must: true,
+  my: true,
+  neither: true,
+  no: true,
+  nor: true,
+  not: true,
+  of: true,
+  off: true,
+  often: true,
+  on: true,
+  only: true,
+  or: true,
+  other: true,
+  our: true,
+  own: true,
+  rather: true,
+  said: true,
+  say: true,
+  says: true,
+  she: true,
+  should: true,
+  since: true,
+  so: true,
+  some: true,
+  than: true,
+  that: true,
+  the: true,
+  their: true,
+  them: true,
+  then: true,
+  there: true,
+  these: true,
+  they: true,
+  'this': true,
+  tis: true,
+  to: true,
+  too: true,
+  twas: true,
+  us: true,
+  wants: true,
+  was: true,
+  we: true,
+  were: true,
+  what: true,
+  when: true,
+  where: true,
+  which: true,
+  'while': true,
+  who: true,
+  whom: true,
+  why: true,
+  will: true,
+  'with': true,
+  would: true,
+  yet: true,
+  you: true,
+  your: true
+};
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
 module.exports = function () {
   var matchmask = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
   var minMatchCharLength = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
@@ -286,7 +415,7 @@ module.exports = function () {
 };
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -308,7 +437,7 @@ module.exports = function (pattern) {
 };
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -340,7 +469,7 @@ module.exports = function (text, pattern) {
 };
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -368,14 +497,14 @@ module.exports = function (pattern, _ref) {
 };
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var bitapScore = __webpack_require__(6);
-var matchedIndices = __webpack_require__(3);
+var bitapScore = __webpack_require__(7);
+var matchedIndices = __webpack_require__(4);
 
 module.exports = function (text, pattern, patternAlphabet, _ref) {
   var _ref$location = _ref.location,
@@ -542,7 +671,7 @@ module.exports = function (text, pattern, patternAlphabet, _ref) {
 };
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -555,6 +684,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 var Bitap = __webpack_require__(1);
 var deepValue = __webpack_require__(2);
 var isArray = __webpack_require__(0);
+var stopWordsMap = __webpack_require__(3);
 
 var Fuse = function () {
   function Fuse(list, _ref) {
@@ -590,6 +720,8 @@ var Fuse = function () {
         tokenize = _ref$tokenize === undefined ? false : _ref$tokenize,
         _ref$matchAllTokens = _ref.matchAllTokens,
         matchAllTokens = _ref$matchAllTokens === undefined ? false : _ref$matchAllTokens,
+        _ref$stopWords = _ref.stopWords,
+        stopWords = _ref$stopWords === undefined ? stopWordsMap : _ref$stopWords,
         _ref$includeMatches = _ref.includeMatches,
         includeMatches = _ref$includeMatches === undefined ? false : _ref$includeMatches,
         _ref$includeScore = _ref.includeScore,
@@ -617,7 +749,8 @@ var Fuse = function () {
       sortFn: sortFn,
       verbose: verbose,
       tokenize: tokenize,
-      matchAllTokens: matchAllTokens
+      matchAllTokens: matchAllTokens,
+      stopWords: stopWords
     };
 
     this.setCollection(list);
@@ -653,13 +786,17 @@ var Fuse = function () {
   }, {
     key: '_prepareSearchers',
     value: function _prepareSearchers() {
+      var _this = this;
+
       var pattern = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
 
       var tokenSearchers = [];
 
       if (this.options.tokenize) {
         // Tokenize on the separator
-        var tokens = pattern.split(this.options.tokenSeparator);
+        var tokens = pattern.split(this.options.tokenSeparator).filter(function (token) {
+          return !_this.options.stopWords[token];
+        });
         for (var i = 0, len = tokens.length; i < len; i += 1) {
           tokenSearchers.push(new Bitap(tokens[i], this.options));
         }
@@ -741,6 +878,8 @@ var Fuse = function () {
   }, {
     key: '_analyze',
     value: function _analyze(_ref2, _ref3) {
+      var _this2 = this;
+
       var key = _ref2.key,
           _ref2$arrayIndex = _ref2.arrayIndex,
           arrayIndex = _ref2$arrayIndex === undefined ? -1 : _ref2$arrayIndex,
@@ -772,7 +911,9 @@ var Fuse = function () {
         this._log('Full text: "' + value + '", score: ' + mainSearchResult.score);
 
         if (this.options.tokenize) {
-          var words = value.split(this.options.tokenSeparator);
+          var words = value.split(this.options.tokenSeparator).filter(function (token) {
+            return !_this2.options.stopWords[token];
+          });
           var scores = [];
 
           for (var i = 0; i < tokenSearchers.length; i += 1) {
