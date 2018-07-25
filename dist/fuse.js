@@ -721,7 +721,7 @@ var Fuse = function () {
         _ref$matchAllTokens = _ref.matchAllTokens,
         matchAllTokens = _ref$matchAllTokens === undefined ? false : _ref$matchAllTokens,
         _ref$stopWords = _ref.stopWords,
-        stopWords = _ref$stopWords === undefined ? stopWordsMap : _ref$stopWords,
+        stopWords = _ref$stopWords === undefined ? [] : _ref$stopWords,
         _ref$includeMatches = _ref.includeMatches,
         includeMatches = _ref$includeMatches === undefined ? false : _ref$includeMatches,
         _ref$includeScore = _ref.includeScore,
@@ -730,6 +730,11 @@ var Fuse = function () {
         verbose = _ref$verbose === undefined ? false : _ref$verbose;
 
     _classCallCheck(this, Fuse);
+
+    var addedStopWordsMap = {};
+    stopWords.forEach(function (word) {
+      return addedStopWordsMap[word] = true;
+    });
 
     this.options = {
       location: location,
@@ -750,7 +755,7 @@ var Fuse = function () {
       verbose: verbose,
       tokenize: tokenize,
       matchAllTokens: matchAllTokens,
-      stopWords: stopWords
+      stopWords: Object.assign(addedStopWordsMap, stopWordsMap)
     };
 
     this.setCollection(list);
