@@ -112,7 +112,7 @@ class Fuse {
     if (this.options.tokenize) {
       // Tokenize on the separator
       const tokens = pattern.split(this.options.tokenSeparator)
-        .filter(token => !this.options.stopWords[token])
+        .filter(token => !this.options.stopWords[token.toLowerCase()])
       for (let i = 0, len = tokens.length; i < len; i += 1) {
         tokenSearchers.push(new Bitap(tokens[i], this.options))
       }
@@ -206,7 +206,7 @@ class Fuse {
 
       if (this.options.tokenize) {
         let words = value.split(this.options.tokenSeparator)
-          .filter(token => !this.options.stopWords[token])
+          .filter(token => !this.options.stopWords[token.toLowerCase()])
         let scores = []
 
         for (let i = 0; i < tokenSearchers.length; i += 1) {
