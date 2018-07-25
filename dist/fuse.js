@@ -800,7 +800,7 @@ var Fuse = function () {
       if (this.options.tokenize) {
         // Tokenize on the separator
         var tokens = pattern.split(this.options.tokenSeparator).filter(function (token) {
-          return !_this.options.stopWords[token];
+          return !_this.options.stopWords[token.toLowerCase()];
         });
         for (var i = 0, len = tokens.length; i < len; i += 1) {
           tokenSearchers.push(new Bitap(tokens[i], this.options));
@@ -917,7 +917,7 @@ var Fuse = function () {
 
         if (this.options.tokenize) {
           var words = value.split(this.options.tokenSeparator).filter(function (token) {
-            return !_this2.options.stopWords[token];
+            return !_this2.options.stopWords[token.toLowerCase()];
           });
           var scores = [];
 
