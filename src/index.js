@@ -46,7 +46,7 @@ class Fuse {
     // When true, the result set will only include records that match all tokens. Will only work
     // if `tokenize` is also true.
     matchAllTokens = false,
-    stopWords = stopWordsMap,
+    stopWords = [],
 
     includeMatches = false,
     includeScore = false,
@@ -54,6 +54,9 @@ class Fuse {
     // Will print to the console. Useful for debugging.
     verbose = false
   }) {
+    const addedStopWordsMap = {};
+    stopWords.forEach(word => (addedStopWordsMap[word] = true));
+
     this.options = {
       location,
       distance,
@@ -73,7 +76,7 @@ class Fuse {
       verbose,
       tokenize,
       matchAllTokens,
-      stopWords
+      stopWords: Object.assign(addedStopWordsMap, stopWordsMap)
     }
 
     this.setCollection(list)
